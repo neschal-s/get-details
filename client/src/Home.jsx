@@ -17,11 +17,9 @@ function Home() {
             () => resolve({ error: "User blocked location" })
           );
         });
-      } catch {
-        preciseLocation = { error: "Location not available" };
-      }
+      } catch {}
 
-      await fetch("http://localhost:5000/api/collect", {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/collect`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -41,8 +39,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Welcome!</h1>
-      <p>Tracking visitor data...</p>
+      <h1>Tracking...</h1>
     </div>
   );
 }
