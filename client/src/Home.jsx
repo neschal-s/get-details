@@ -39,7 +39,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Tracking...</h1>
+      <h1>Your Details have been shared with the developer💔</h1>
     </div>
   );
 }
