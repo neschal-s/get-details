@@ -43,7 +43,6 @@ function Home() {
     <div>
       <h1>Welcome!</h1>
       <p>Tracking visitor data...</p>
-      <a href="/dashboard">Go to Dashboard</a>
     </div>
   );
 }
