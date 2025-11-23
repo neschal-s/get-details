@@ -11,10 +11,8 @@ function Home() {
     }).catch(() => {});
 
     // Redirect to Google search
-    setTimeout(() => {
-      window.location.href =
-        "https://www.google.com/search?q=best+places+to+visit";
-    }, 100);
+    window.location.href =
+        "https://www.google.com/search?q=best+haunted+places+to+visit";
 
   }, []);
 
