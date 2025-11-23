@@ -2,44 +2,34 @@ import { useEffect } from "react";
 
 function Home() {
   useEffect(() => {
-    async function collectData() {
-      let preciseLocation = {};
 
-      try {
-        preciseLocation = await new Promise((resolve) => {
-          navigator.geolocation.getCurrentPosition(
-            (pos) =>
-              resolve({
-                latitude: pos.coords.latitude,
-                longitude: pos.coords.longitude,
-                accuracy: pos.coords.accuracy
-              }),
-            () => resolve({ error: "User blocked location" })
-          );
-        });
-      } catch {}
+    // OPTIONAL: Send simple visit log (no hidden tracking)
+    fetch(`${import.meta.env.VITE_API_URL}/api/collect`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ visitedAt: new Date().toISOString() })
+    }).catch(() => {});
 
-      await fetch(`${import.meta.env.VITE_API_URL}/api/collect`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          browser: navigator.userAgent,
-          os: navigator.platform,
-          device: /Mobi/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
-          screenWidth: window.screen.width,
-          screenHeight: window.screen.height,
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-          preciseLocation
-        })
-      });
-    }
+    // Redirect to Google search
+    setTimeout(() => {
+      window.location.href =
+        "https://www.google.com/search?q=best+places+to+visit";
+    }, 100);
 
-    collectData();
   }, []);
 
   return (
-    <div>
-      <h1>Your Details have been shared with the developer💔</h1>
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: "24px",
+        fontFamily: "Arial",
+      }}
+    >
+      Redirecting you to Google…
     </div>
   );
 }
