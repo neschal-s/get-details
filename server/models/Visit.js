@@ -14,4 +14,4 @@ const visitSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-export default mongoose.model("Visit", visitSchema);
+export default mongoose.model("visit", visitSchema);
