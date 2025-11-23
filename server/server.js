@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
-import Visit from "./models/Visit.js";
+import Visit from "./models/visit.js";
 
 dotenv.config();
 
